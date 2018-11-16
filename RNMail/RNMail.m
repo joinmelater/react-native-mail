@@ -27,6 +27,16 @@
 }
 
 RCT_EXPORT_MODULE()
+    
+RCT_EXPORT_METHOD(isMail:(RCTResponseSenderBlock)callback)
+{
+    if ([MFMailComposeViewController canSendMail])
+    {
+        callback(@[@"available"]);
+    } else {
+      callback(@[@"not_available"]);
+    }
+}
 
 RCT_EXPORT_METHOD(mail:(NSDictionary *)options
                   callback: (RCTResponseSenderBlock)callback)
